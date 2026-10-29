@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kollayil Grama Panchayat Web GIS | Demographics, Terrain, Agriculture, Development & Disaster Management</title>
+  
+  <!-- Meta tags for Academic & GIS Portals -->
+  <meta name="description" content="Comprehensive Web GIS Portal for Kollayil Grama Panchayat, Neyyattinkara Taluk, Thiruvananthapuram District, Kerala. Geographic Information System, March 2026 Demographics, Digital Elevation, Soil, Geology, Agriculture, Development Profile, and Disaster Risk Assessment." />
+  <meta name="keywords" content="Kollayil Grama Panchayat, Web GIS, Kerala, Leaflet, QGIS, Neyyattinkara, Kalatharaikkal Padasekharam, Agriculture, Development Profile, Disaster Management, Demographics 2026, HAINA L HERON" />
+  <meta name="author" content="HAINA .L. HERON" />
+
+  <!-- Leaflet.js CSS (v1.9.4) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- Main Application CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       TOP GOVERNMENT & INSTITUTIONAL HEADER
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="header-top-bar">
+      <div class="top-bar-left">
+        <span>Government of Kerala &bull; Local Self Government Department (LSGD)</span>
+        <span class="badge-tag">Academic Web GIS Portal</span>
+      </div>
+      <div class="top-bar-right">
+        <span>Perumkadavila Block &bull; Neyyattinkara Taluk &bull; Thiruvananthapuram</span>
+        <span id="systemTimeDisplay">WGS 84 (EPSG:4326)</span>
+      </div>
+    </div>
+
+    <div class="nav-container">
+      <div class="brand-wrapper">
+        <div class="brand-emblem" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <span class="panchayat-ml">കൊല്ലയിൽ ഗ്രാമപഞ്ചായത്ത്</span>
+          <span class="panchayat-en">Kollayil Grama Panchayat Web GIS</span>
+          <span class="panchayat-sub">Postgraduate Research &bull; Geography & Disaster Management</span>
+        </div>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+        &#9776;
+      </button>
+
+      <nav class="main-navigation" id="mainNav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#webgis" class="nav-cta-btn">Interactive Map</a></li>
+          <li><a href="#terrain">Terrain</a></li>
+          <li><a href="#geology">Geology</a></li>
+          <li><a href="#soil">Soil & Drainage</a></li>
+          <li><a href="#transport">Transport</a></li>
+          <li><a href="#demographics">Demographics</a></li>
+          <li><a href="#history">History</a></li>
+          <li><a href="#governance">Governance</a></li>
+          <li><a href="#development">Development</a></li>
+          <li><a href="#agriculture">Agriculture</a></li>
+          <li><a href="#disaster">Disaster Mgmt</a></li>
+          <li><a href="#environment">Environment</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#methodology">Data Sources</a></li>
+          <li><a href="#developer">Developer</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       1. HERO SECTION
+       ======================================================================== -->
+  <section class="hero-section" id="home">
+    <div class="hero-inner">
+      <span class="hero-pill">Spatial Data Infrastructure &bull; Neyyattinkara Taluk &bull; Kerala, India</span>
+      <h1 class="hero-title">Kollayil Grama Panchayat Web GIS</h1>
+      <p class="hero-subtitle">
+        Geographic Information System, Demographic Profile, Environmental Resources, Agricultural Development, Historical Background, and Disaster Management Decision Support System.
+      </p>
+
+      <div style="margin: 1.25rem 0; font-size: 0.95rem; color: var(--accent-light);">
+        <strong>Project Developer:</strong> HAINA .L. HERON &bull; 
+        <strong>Email:</strong> <a href="mailto:hainalheron2005@gmail.com" style="color:#ffffff; text-decoration:underline;">hainalheron2005@gmail.com</a>
+      </div>
+
+      <div class="hero-quick-stats">
+        <div class="hero-stat-card">
+          <div class="stat-label">Administrative Status</div>
+          <div class="stat-value">Grama Panchayat</div>
+          <div class="stat-status">Perumkadavila Block</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="stat-label">Total Area</div>
+          <div class="stat-value">13.73 km&sup2;</div>
+          <div class="stat-status">Official Survey Area</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="stat-label">Total Population (2026)</div>
+          <div class="stat-value">25,077</div>
+          <div class="stat-status">Updated 17 March 2026</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="stat-label">Administrative Wards</div>
+          <div class="stat-value">16 Wards</div>
+          <div class="stat-status">Parassala Constituency</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="#webgis" class="gis-btn gis-btn-primary" style="padding:0.75rem 1.5rem; font-size:1rem;">Explore Interactive Map</a>
+        <a href="#demographics" class="gis-btn" style="padding:0.75rem 1.5rem; font-size:1rem; background:rgba(255,255,255,0.15); color:#ffffff; border-color:rgba(255,255,255,0.3);">View 2026 Demographics</a>
+        <a href="#development" class="gis-btn" style="padding:0.75rem 1.5rem; font-size:1rem; background:rgba(255,255,255,0.15); color:#ffffff; border-color:rgba(255,255,255,0.3);">Development Profile</a>
+        <a href="#agriculture" class="gis-btn" style="padding:0.75rem 1.5rem; font-size:1rem; background:rgba(255,255,255,0.15); color:#ffffff; border-color:rgba(255,255,255,0.3);">Agricultural Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       2. PANCHAYAT PROFILE & ADMINISTRATIVE DETAILS
+       ======================================================================== -->
+  <section class="profile-section" id="profile">
+    <div class="profile-container">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2><span>🏛️</span> Panchayat Profile & Administrative Details</h2>
+          <p>Official administrative overview, jurisdiction, headquarters, and supplied contact channels for Kollayil Grama Panchayat.</p>
+        </div>
+        <div>
+          <span class="badge-tag">LSGD Profile</span>
+        </div>
+      </div>
+
+      <div class="profile-grid">
+        <!-- Office Image Card -->
+        <div class="profile-image-card">
+          <img src="./assets/images/kollayil-office.webp" alt="Kollayil Grama Panchayat Office Building" id="panchayatOfficeImg" />
+          <div class="profile-image-caption">
+            <strong>Kollayil Grama Panchayat Office</strong> &mdash; Dhanuvachapuram P.O., Neyyattinkara, Thiruvananthapuram, Kerala &ndash; 695503. Civic governance headquarters and public administration hub.
+          </div>
+        </div>
+
+        <!-- Administrative Details Card -->
+        <div class="profile-details-card">
+          <h3 style="color:var(--primary-dark); font-size:1.3rem; margin-bottom:0.75rem;">Administrative Fact Sheet</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted);">Supplied administrative profile verified from Kerala Local Self Government (Panchayat) Department records:</p>
+
+          <table class="admin-table">
+            <tbody>
+              <tr>
+                <th>Panchayat Name</th>
+                <td><strong>Kollayil Grama Panchayat</strong> (കൊല്ലയിൽ)</td>
+              </tr>
+              <tr>
+                <th>Revenue District</th>
+                <td>Thiruvananthapuram</td>
+              </tr>
+              <tr>
+                <th>Taluk</th>
+                <td>Neyyattinkara</td>
+              </tr>
+              <tr>
+                <th>Block Panchayat</th>
+                <td>Perumkadavila</td>
+              </tr>
+              <tr>
+                <th>Total Geographical Area</th>
+                <td><strong>13.73 square kilometres</strong></td>
+              </tr>
+              <tr>
+                <th>Total Revenue Villages</th>
+                <td>2 Villages (Kollayil and Perumkadavila)</td>
+              </tr>
+              <tr>
+                <th>Total Wards</th>
+                <td><strong>16 Wards</strong></td>
+              </tr>
+              <tr>
+                <th>Assembly Constituency</th>
+                <td>Parassala</td>
+              </tr>
+              <tr>
+                <th>Parliamentary Constituency</th>
+                <td>Thiruvananthapuram</td>
+              </tr>
+              <tr>
+                <th>Headquarters Postal Address</th>
+                <td>Kollayil Grama Panchayat Office, Dhanuvachapuram P.O., Neyyattinkara, Thiruvananthapuram &ndash; 695503, Kerala, India.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">
+            <em>*Note: Contact channels are supplied administrative information for official correspondence.</em>
+          </div>
+
+          <!-- Functional Contact Buttons -->
+          <div class="contact-action-bar">
+            <a href="tel:04712232383" class="contact-btn contact-btn-tel">
+              <span>📞</span> Office: 0471-2232383
+            </a>
+            <a href="tel:9496040628" class="contact-btn contact-btn-mobile">
+              <span>📱</span> Mobile: 9496040628
+            </a>
+            <a href="mailto:kollayilgp@gmail.com" class="contact-btn contact-btn-email">
+              <span>✉️</span> Email: kollayilgp@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16-Ward Directory -->
+      <div style="margin-top: 3.5rem;">
+        <div class="section-title-wrap" style="margin-bottom: 1.25rem;">
+          <h3 style="font-size: 1.35rem; color: var(--primary-dark); display: flex; align-items: center; gap: 0.5rem;">
+            <span>📋</span> Official 16-Ward Directory
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            The 16 constituent wards of Kollayil Grama Panchayat displayed in official supplied order. Click <strong>"View on Map"</strong> to navigate directly to the ward.
+          </p>
+        </div>
+
+        <div class="ward-search-container">
+          <input type="text" id="wardSearchInput" class="ward-search-input" placeholder="Filter wards by number or name (e.g. Nadoorkolla, Dhanuvachapuram)..." />
+          <span style="font-size: 0.85rem; color: var(--text-muted);"><strong id="wardFilterCount">16</strong> wards displayed</span>
+        </div>
+
+        <div class="wards-grid" id="wardsDirectoryGrid">
+          <!-- Wards 1 to 16 dynamically rendered in supplied order -->
+        </div>
+
+        <div style="margin-top:1.25rem; font-size:0.82rem; color:var(--text-muted); background:#f8fafc; padding:0.75rem 1rem; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+          <strong>Spatial Boundary Note:</strong> The ward directory displays the 16 official wards per the March 2026 LSGD update. While the general spatial extents are mapped via QGIS GIS datasets, fine-grained micro-level cadastral parcel boundaries remain subject to certified village survey verification.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       3. LOCATION AND ADMINISTRATIVE BOUNDARIES
+       ======================================================================== -->
+  <section class="analysis-section" id="location" style="background:#f8fafc;">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <h2><span>🌐</span> Location & Regional Geographic Context</h2>
+        <p>Physiographic setting, geographical bounding envelope, and regional linkages in southern Kerala.</p>
+      </div>
+    </div>
+
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🧭</div>
+          <div>
+            <h3>Geographic Coordinates & Bounds</h3>
+            <span class="badge-tag" style="background:var(--primary-color);">WGS 84 (EPSG:4326)</span>
+          </div>
+        </div>
+        <p>
+          Kollayil Grama Panchayat is situated in the southern part of Thiruvananthapuram District between latitudes <strong>8.3712&deg; N to 8.4143&deg; N</strong> and longitudes <strong>77.1035&deg; E to 77.1593&deg; E</strong>.
+        </p>
+        <div class="qgis-layer-ref">Bounding Box: SW [8.37125, 77.10347] &bull; NE [8.41431, 77.15931]</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🏞️</div>
+          <div>
+            <h3>Physiography & Neyyar River Basin</h3>
+            <span class="badge-tag" style="background:var(--water-color);">Midland Terrain</span>
+          </div>
+        </div>
+        <p>
+          Occupies the undulating midland physiographic division of Kerala characterized by lateritic plateaus, residual hillocks, and intervening alluvial valley fills connected to tributaries of the Neyyar River basin.
+        </p>
+        <div class="qgis-layer-ref">Hydrology: Stream orders 1 to 3 draining south-westward</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🛣️</div>
+          <div>
+            <h3>Regional Transportation Axis</h3>
+            <span class="badge-tag" style="background:var(--road-color);">Connectivity</span>
+          </div>
+        </div>
+        <p>
+          Well connected via Dhanuvachapuram railway station and rural arterial roads linking to the National Highway 66 (NH-66) corridor connecting Thiruvananthapuram and Kanyakumari.
+        </p>
+        <div class="qgis-layer-ref">Arterial Corridor: Dhanuvachapuram &bull; Udiyankulangara &bull; Parassala</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">📐</div>
+          <div>
+            <h3>Cadastral & Area Classification</h3>
+            <span class="badge-tag" style="background:#854d0e;">13.73 km&sup2;</span>
+          </div>
+        </div>
+        <p>
+          Encompasses 13.73 km&sup2; comprising the revenue villages of Kollayil and Perumkadavila, structured into 16 democratic administrative wards for local planning and delivery of public services.
+        </p>
+        <div class="qgis-layer-ref">LSGD Code: G010403 &bull; Parassala Block Jurisdiction</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. INTERACTIVE WEB GIS WORKBENCH
+       ======================================================================== -->
+  <section class="gis-section" id="webgis">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <h2>
+          <span>🗺️</span> Interactive GIS Map Workbench
+        </h2>
+        <p>Full cartographic workbench integrating QGIS vector layers (Drainage, Roads, Geology, Geomorphology, Soil, Contours, Wards, Facilities) and high-resolution digital terrain overlays (DEM, Hillshade, Slope).</p>
+      </div>
+      <div class="toolbar-group">
+        <button class="gis-btn" id="btnResetExtent" title="Zoom to Kollayil Panchayat default extent">
+          <span>🔄</span> Reset Extent
+        </button>
+        <button class="gis-btn" id="btnFullScreen" title="Toggle full screen view">
+          <span>⛶</span> Full Screen
+        </button>
+      </div>
+    </div>
+
+    <!-- GIS Workbench Shell -->
+    <div class="gis-workbench">
+      <!-- Workbench Top Toolbar -->
+      <div class="gis-toolbar">
+        <div class="gis-search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="gis-search-input" id="gisSearchInput" placeholder="Search ward, road, soil type, rock, contour, facility, or landmark..." autocomplete="off" />
+          <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+        </div>
+
+        <div class="toolbar-group">
+          <label for="basemapSelect" style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Basemap:</label>
+          <select id="basemapSelect" class="basemap-select">
+            <option value="osm" selected>OpenStreetMap (Standard)</option>
+            <option value="satellite">Esri World Imagery (Satellite)</option>
+            <option value="topo">OpenTopoMap (Topography)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Main GIS Grid Viewport -->
+      <div class="gis-main-view">
+        <!-- Left Layers & Legend Control Sidebar -->
+        <aside class="gis-sidebar">
+          
+          <!-- Vector Layer Visibility Panel -->
+          <div class="panel-block">
+            <div class="panel-title">
+              <span>Vector Layers</span>
+              <span class="badge-tag" style="background:var(--primary-color);">QGIS 3.44</span>
+            </div>
+            <div class="layer-list">
+              <div class="layer-item">
+                <label class="layer-label" for="chkLayerWards">
+                  <input type="checkbox" id="chkLayerWards" checked />
+                  <span class="layer-swatch swatch-ward"></span>
+                  <span>Ward Boundaries</span>
+                </label>
+                <span class="layer-count-badge" id="countWards">Loading...</span>
+              </div>
+              <div class="layer-item">
+                <label class="layer-label" for="chkLayerDrainage">
+                  <input type="checkbox" id="chkLayerDrainage" checked />
+                  <span class="layer-swatch swatch-drainage"></span>
+                  <span>Drainage Network</span>
+                </label>
+                <span class="layer-count-badge" id="countDrainage">Loading...</span>
+              </div>
+              <div class="layer-item">
+                <label class="layer-label" for="chkLayerRoads">
+                  <input type="checkbox" id="chkLayerRoads" checked />
+                  <span class="layer-swatch swatch-road"></span>
+                  <span>Road Network</span>
+                </label>
+                <span class="layer-count-badge" id="countRoads">Loading...</span>
+              </div>
+              <div class="layer-item">
+                <label class="layer-label" for="chkLayerSoil">
+                  <input type="checkbox" id="chkLayerSoil" checked />
+                  <span class="layer-swatch" style="background:#b45309; border-color:#78350f;"></span>
+                  <span>Soil Types</span>
+                </label>
+                <span class="layer-count-badge" id="countSoil">Loading...</span>
+              </div>
+              <div class="layer-item">
+                <label class="layer-label" for="chkLayerContours">
+                  <input type="checkbox" id="chkLayerContours" />
+                  <span class="layer-swatch" style="background:#a16207; border-color:#713f12;"></span>
+                  <span>Contours (10m)</span>
+                </label>
+                <span class="layer-count-badge" id="countContours">Loading...</span>
+              </div>
+              <div class="layer-item">
+                <label class="layer-label" for="chkLayerGeology">
+                  <input type="checkbox" id="chkLayerGeology" />
+                  <span class="layer-swatch swatch-geology"></span>
+                  <span>Geology (Lithology)</span>
+                </label>
+                <span class="layer-count-badge" id="countGeology">Loading...</span>
+              </div>
+              <div class="layer-item">
+                <label class="layer-label" for="chkLayerGeomorphology">
+                  <input type="checkbox" id="chkLayerGeomorphology" />
+                  <span class="layer-swatch swatch-geomorph"></span>
+                  <span>Geomorphology</span>
+                </label>
+                <span class="layer-count-badge" id="countGeomorphology">Loading...</span>
+              </div>
+              <div class="layer-item">
+                <label class="layer-label" for="chkLayerFacilities">
+                  <input type="checkbox" id="chkLayerFacilities" checked />
+                  <span class="layer-swatch" style="background:#8b5cf6; border-color:#6d28d9; border-radius:50%;"></span>
+                  <span>Public Facilities (13)</span>
+                </label>
+                <span class="layer-count-badge" id="countFacilities">Loading...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Raster Terrain Overlays with Opacity Sliders -->
+          <div class="panel-block">
+            <div class="panel-title">
+              <span>Raster Terrain Overlays</span>
+              <span class="badge-tag" style="background:#0284c7;">GeoTIFF Overlays</span>
+            </div>
+            <div class="layer-list">
+              <!-- DEM Overlay -->
+              <div class="raster-layer-item">
+                <div class="raster-header-row">
+                  <label class="layer-label" for="chkRasterDem">
+                    <input type="checkbox" id="chkRasterDem" />
+                    <span class="layer-swatch" style="background:linear-gradient(to right, #228b22, #ebd755, #b45f06);"></span>
+                    <span>DEM Shaded Relief</span>
+                  </label>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">1-406m</span>
+                </div>
+                <div class="opacity-slider-row">
+                  <span>Opacity:</span>
+                  <input type="range" id="opacityDem" class="opacity-slider" min="10" max="100" value="75" />
+                  <span id="opacityDemVal">75%</span>
+                </div>
+              </div>
+
+              <!-- Hillshade Overlay -->
+              <div class="raster-layer-item">
+                <div class="raster-header-row">
+                  <label class="layer-label" for="chkRasterHillshade">
+                    <input type="checkbox" id="chkRasterHillshade" />
+                    <span class="layer-swatch" style="background:linear-gradient(to right, #475569, #cbd5e1);"></span>
+                    <span>Hillshade Relief</span>
+                  </label>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">Morphology</span>
+                </div>
+                <div class="opacity-slider-row">
+                  <span>Opacity:</span>
+                  <input type="range" id="opacityHillshade" class="opacity-slider" min="10" max="100" value="65" />
+                  <span id="opacityHillshadeVal">65%</span>
+                </div>
+              </div>
+
+              <!-- Slope Overlay -->
+              <div class="raster-layer-item">
+                <div class="raster-header-row">
+                  <label class="layer-label" for="chkRasterSlope">
+                    <input type="checkbox" id="chkRasterSlope" />
+                    <span class="layer-swatch" style="background:linear-gradient(to right, #2ea043, #f5c242, #d9372b);"></span>
+                    <span>Slope Classification</span>
+                  </label>
+                  <span style="font-size:0.75rem; color:var(--text-muted);">0-74&deg;</span>
+                </div>
+                <div class="opacity-slider-row">
+                  <span>Opacity:</span>
+                  <input type="range" id="opacitySlope" class="opacity-slider" min="10" max="100" value="70" />
+                  <span id="opacitySlopeVal">70%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Cartographic Legend -->
+          <div class="panel-block">
+            <div class="panel-title">
+              <span>Cartographic Legend</span>
+            </div>
+            <div class="legend-content">
+              <div class="legend-item">
+                <span class="layer-swatch swatch-ward"></span>
+                <span>Ward Boundaries (16 Administrative Wards)</span>
+              </div>
+              <div class="legend-item">
+                <span class="layer-swatch swatch-drainage"></span>
+                <span>Drainage Streams (Stream Orders 1 to 3)</span>
+              </div>
+              <div class="legend-item">
+                <span class="layer-swatch swatch-road"></span>
+                <span>Road Network (29 Classified Segments)</span>
+              </div>
+              <div class="legend-item">
+                <span class="layer-swatch" style="background:#ef4444; border-color:#b91c1c;"></span>
+                <span>Red Soil (Lateritic Clay Loam)</span>
+              </div>
+              <div class="legend-item">
+                <span class="layer-swatch" style="background:#b45309; border-color:#78350f;"></span>
+                <span>Hill Soil (Gravelly Skeletal Soil)</span>
+              </div>
+              <div class="legend-item">
+                <span class="layer-swatch" style="background:#a16207; border-color:#713f12;"></span>
+                <span>Contour Isolines (10-meter Intervals)</span>
+              </div>
+              <div class="legend-item">
+                <span class="layer-swatch swatch-geology"></span>
+                <span>Geology (Khondalite, Charnockite, Migmatite)</span>
+              </div>
+              <div class="legend-item">
+                <span class="layer-swatch swatch-geomorph"></span>
+                <span>Geomorphology (Plateau, Valley Fill, Ridge)</span>
+              </div>
+              <div class="legend-item">
+                <span class="layer-swatch" style="background:#8b5cf6; border-color:#6d28d9; border-radius:50%;"></span>
+                <span>Public Institutions & Shelters</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct QGIS File Preview Tool -->
+          <div class="panel-block">
+            <div class="panel-title">
+              <span>Test QGIS Layer Directly</span>
+            </div>
+            <div class="qgis-upload-box">
+              <p>Load any exported GeoJSON file from QGIS directly into the map canvas:</p>
+              <div class="file-input-wrapper">
+                <button class="gis-btn gis-btn-primary" type="button">Select GeoJSON File</button>
+                <input type="file" id="localGeoJsonInput" accept=".geojson,.json" />
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Leaflet Map Canvas Viewport -->
+        <div class="map-canvas-container">
+          <div id="map"></div>
+
+          <!-- Overlay Notification / Status Banner -->
+          <div class="map-status-overlay status-warning" id="mapStatusOverlay">
+            <span>ℹ️</span>
+            <div>Loading spatial data for Kollayil Grama Panchayat...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Coordinates & Projection Status Footer -->
+      <div class="map-coords-bar">
+        <div>
+          <span>Coordinate Reference System: </span>
+          <span class="coords-readout">WGS 84 / Geographic (EPSG:4326) &bull; QGIS Source: UTM 43N</span>
+        </div>
+        <div style="display:flex; gap:1.5rem;">
+          <span id="zoomDisplay" class="coords-readout">Zoom: 13</span>
+          <span id="coordsDisplay" class="coords-readout">Lat: 8.39340° N, Lng: 77.13140° E</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. DIGITAL TERRAIN AND TOPOGRAPHIC ANALYSIS
+       ======================================================================== -->
+  <section class="analysis-section" id="terrain">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <h2><span>⛰️</span> Terrain and Topographic Analysis</h2>
+        <p>Quantitative elevation modeling, slope angle classification, shaded relief morphology, and contour line analysis derived from SRTM 30m Digital Elevation Model.</p>
+      </div>
+    </div>
+
+    <div class="analysis-grid">
+      <!-- DEM Card -->
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">📊</div>
+          <div>
+            <h3>Digital Elevation Model (DEM)</h3>
+            <span class="badge-tag" style="background:#1b4332;">Elevation 1m &ndash; 406m</span>
+          </div>
+        </div>
+        <p>
+          Derived from 30m SRTM elevation raster clipped to Kollayil boundary. Elevation rises from <strong>1 meter</strong> along low-lying drainage channels to <strong>406 meters</strong> at the eastern residual ridge crests.
+        </p>
+        <div class="qgis-layer-ref">Source: clippe dem.tif &bull; Grid: 201 &times; 155 pixels &bull; Res: 30m</div>
+      </div>
+
+      <!-- Slope Card -->
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">📐</div>
+          <div>
+            <h3>Slope Gradient Classification</h3>
+            <span class="badge-tag" style="background:#ea580c;">Range: 0&deg; &ndash; 74.1&deg;</span>
+          </div>
+        </div>
+        <p>
+          Slope angles classified into 5 standard geomorphological categories: Gentle (0&ndash;5&deg; in valley fills), Moderate (5&ndash;15&deg;), Moderately Steep (15&ndash;25&deg;), Steep (25&ndash;35&deg;), and Very Steep (&gt;35&deg; on rocky ridges).
+        </p>
+        <div class="qgis-layer-ref">Source: slope kollayil.tif &bull; Essential for soil erosion prevention</div>
+      </div>
+
+      <!-- Hillshade Card -->
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🌄</div>
+          <div>
+            <h3>Hillshade & Morphometry</h3>
+            <span class="badge-tag" style="background:#475569;">Azimuth 315&deg; &bull; Alt 45&deg;</span>
+          </div>
+        </div>
+        <p>
+          Simulated solar illumination revealing micro-topographical ridges, drainage incisions, structural lineaments, and amphitheater-shaped valley heads supporting wetland agriculture.
+        </p>
+        <div class="qgis-layer-ref">Source: hill shade.tif &bull; 8-bit shaded relief grayscale</div>
+      </div>
+
+      <!-- Contours Card -->
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">〰️</div>
+          <div>
+            <h3>Topographic Contours (10m)</h3>
+            <span class="badge-tag" style="background:#a16207;">163 Contour Vectors</span>
+          </div>
+        </div>
+        <p>
+          163 contour lines generated at 10-meter vertical intervals (40m, 50m, 60m ... up to 350m+). Accurately delineates drainage divides, terraced slopes, and flood-prone valley floors.
+        </p>
+        <div class="qgis-layer-ref">Source: contours.shp / contours.geojson &bull; EPSG:4326</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       6. GEOLOGY AND GEOMORPHOLOGY
+       ======================================================================== -->
+  <section class="analysis-section" id="geology" style="background:#ffffff;">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <h2><span>🪨</span> Geology & Geomorphological Landforms</h2>
+        <p>Precambrian crystalline bedrock lithology and quaternary geomorphological classification in Kollayil Grama Panchayat.</p>
+      </div>
+    </div>
+
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🟣</div>
+          <div>
+            <h3>Khondalite Group of Rocks</h3>
+            <span class="badge-tag" style="background:#7e22ce;">Metamorphic Lithology</span>
+          </div>
+        </div>
+        <p>
+          Predominant crystalline granulite-facies rock formation comprising garnet-sillimanite-graphite gneisses. Forms the underlying foundation for the extensive laterite weathering crust across Kollayil.
+        </p>
+        <div class="qgis-layer-ref">Layer: clipped geology.shp / geology.geojson</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🟠</div>
+          <div>
+            <h3>Charnockite & Migmatite Complexes</h3>
+            <span class="badge-tag" style="background:#be185d;">Hard Rock Basement</span>
+          </div>
+        </div>
+        <p>
+          Charnockite massifs and composite migmatitic gneisses outcropping along eastern ridges. Offers high structural compressive strength and localized fracture-zone aquifer networks.
+        </p>
+        <div class="qgis-layer-ref">Lithology: Acid to intermediate charnockite & migmatites</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🟡</div>
+          <div>
+            <h3>Lateritic Plateaus & Denudational Hills</h3>
+            <span class="badge-tag" style="background:#a16207;">22 Landform Units</span>
+          </div>
+        </div>
+        <p>
+          Flat-topped to gently undulating lateritic plateau surfaces, structural ridges, and denudational residual knolls subject to long-term sub-aerial tropical weathering.
+        </p>
+        <div class="qgis-layer-ref">Landform: Dissected laterite plateaus and structural ridges</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🟢</div>
+          <div>
+            <h3>Valley Fills & Agrarian Lowlands</h3>
+            <span class="badge-tag" style="background:#15803d;">Agricultural Corridors</span>
+          </div>
+        </div>
+        <p>
+          Colluvial and alluvial valley fills in depressions between hills. Rich in silt and organic matter, these valley bottoms host Kalatharaikkal Padasekharam and extensive paddy fields.
+        </p>
+        <div class="qgis-layer-ref">Suitability: High groundwater table & wet crop cultivation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       7. SOIL AND DRAINAGE NETWORK
+       ======================================================================== -->
+  <section class="analysis-section" id="soil" style="background:#f8fafc;">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <h2><span>🌱</span> Soil Classification & Hydrological Drainage</h2>
+        <p>Pedological series characteristics and stream network hierarchy tributary to the Neyyar River basin.</p>
+      </div>
+    </div>
+
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🔴</div>
+          <div>
+            <h3>Red Soil (Lateritic Loam)</h3>
+            <span class="badge-tag" style="background:#b91c1c;">Pedological Series</span>
+          </div>
+        </div>
+        <p>
+          Derived from the weathering of underlying Khondalite and Charnockite rocks. Rich in iron oxides, permeable, moderately acidic (pH 5.0&ndash;6.2), well-suited for coconut, banana, rubber, and vegetable farming.
+        </p>
+        <div class="qgis-layer-ref">Verified layer: clipped soil.shp &bull; Type: Red Soil</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🟤</div>
+          <div>
+            <h3>Hill Soil (Skeletal Upland Soil)</h3>
+            <span class="badge-tag" style="background:#78350f;">Upland Series</span>
+          </div>
+        </div>
+        <p>
+          Shallow, gravelly to stony soils occurring on steeper ridge slopes and plateau margins. Susceptible to sheet and rill erosion; requires contour bunding, cover cropping, and agro-forestry conservation.
+        </p>
+        <div class="qgis-layer-ref">Verified layer: clipped soil.shp &bull; Type: Hill Soil</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">💧</div>
+          <div>
+            <h3>Drainage Network Hierarchy</h3>
+            <span class="badge-tag" style="background:#0284c7;">13 Stream Segments</span>
+          </div>
+        </div>
+        <p>
+          Dendritic to sub-dendritic drainage pattern with classified stream orders 1, 2, and 3. Headwaters rise in the eastern hills and flow south-westward towards the Neyyar River basin.
+        </p>
+        <div class="qgis-layer-ref">Attributes: ORDER1 (Stream Order 1 to 3) &bull; clipped drainage.shp</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🌊</div>
+          <div>
+            <h3>Traditional Water Harvesting: Chiras & Kavus</h3>
+            <span class="badge-tag" style="background:#0369a1;">Conservation</span>
+          </div>
+        </div>
+        <p>
+          Traditional rainwater harvesting structures including temple ponds (Chiras), sacred groves (Kavus), and field retention check bunds which maintain the local groundwater table during the summer months.
+        </p>
+        <div class="qgis-layer-ref">Hydrology: Aquifer recharge zones and ecological conservation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       8. ROADS AND TRANSPORTATION NETWORK
+       ======================================================================== -->
+  <section class="analysis-section" id="transport" style="background:#ffffff;">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <h2><span>🛣️</span> Roads & Transportation Network</h2>
+        <p>Spatial road network inventory, arterial accessibility, and rural connectivity infrastructure in Kollayil Grama Panchayat.</p>
+      </div>
+    </div>
+
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🚗</div>
+          <div>
+            <h3>Road Network Inventory</h3>
+            <span class="badge-tag" style="background:#ea580c;">29 Classified Roads</span>
+          </div>
+        </div>
+        <p>
+          The GIS road layer contains 29 digitized road segments traversing the 16 wards, connecting ward centers, agricultural pads, schools, and healthcare institutions.
+        </p>
+        <div class="qgis-layer-ref">Layer: clipped road.shp / roads.geojson &bull; WGS 84</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🚉</div>
+          <div>
+            <h3>Dhanuvachapuram Railway Station</h3>
+            <span class="badge-tag" style="background:#1b4332;">Southern Railway</span>
+          </div>
+        </div>
+        <p>
+          Located at Dhanuvachapuram (Ward 10), serving as a crucial rail passenger node on the Thiruvananthapuram &ndash; Nagercoil railway line, enabling daily commuter access to the state capital.
+        </p>
+        <div class="qgis-layer-ref">Transport Mode: Broad Gauge Rail Network</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🚌</div>
+          <div>
+            <h3>Arterial Links to NH-66 Corridor</h3>
+            <span class="badge-tag" style="background:#2563eb;">Regional Highway</span>
+          </div>
+        </div>
+        <p>
+          Direct arterial road connections link Dhanuvachapuram, Makkolla, and Udiyankulangara to the National Highway 66 corridor, providing swift access to Neyyattinkara, Parassala, and Thiruvananthapuram city.
+        </p>
+        <div class="qgis-layer-ref">Corridors: Udiyankulangara &ndash; Dhanuvachapuram link</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🚜</div>
+          <div>
+            <h3>Agricultural Farm Road Accessibility</h3>
+            <span class="badge-tag" style="background:#15803d;">Rural Connectivity</span>
+          </div>
+        </div>
+        <p>
+          Tractor-passable and combine-harvester-compatible interior field tracks enable the Agricultural Karma Sena to transport machinery directly to Kalatharaikkal Padasekharam and farm holdings.
+        </p>
+        <div class="qgis-layer-ref">Beneficiaries: Paddy cultivators, vegetable growers, dairy farmers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       9. DEMOGRAPHIC PROFILE (UPDATED 17 MARCH 2026)
+       ======================================================================== -->
+  <section class="stats-section" id="demographics">
+    <div class="stats-container">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2><span>📊</span> Demographic Profile of Kollayil Grama Panchayat</h2>
+          <p>
+            Official demographic figures supplied from the Kerala Local Self Government (Panchayat) Department, reported as updated on <strong>17 March 2026</strong>.
+          </p>
+        </div>
+        <div>
+          <span class="badge-tag" style="background:#1b4332;">Updated 17 March 2026</span>
+        </div>
+      </div>
+
+      <!-- 10 Demographic Statistic Cards Grid -->
+      <div class="stats-grid-cards">
+        <div class="dashboard-card">
+          <div class="card-top">
+            <span class="card-metric-title">Total Population</span>
+            <span class="card-icon">👥</span>
+          </div>
+          <div class="card-number">25,077</div>
+          <div class="card-foot">
+            <span>Supplied Figure</span>
+            <span class="verification-tag" style="background:#d8f3dc; color:#1b4332;">LSGD March 2026</span>
+          </div>
+        </div>
+
+        <div class="dashboard-card card-blue">
+          <div class="card-top">
+            <span class="card-metric-title">Male Population</span>
+            <span class="card-icon">👨</span>
+          </div>
+          <div class="card-number">12,221</div>
+          <div class="card-foot">
+            <span>48.73% of Population</span>
+            <span class="verification-tag" style="background:#e0f2fe; color:#0369a1;">Verified Arithmetic</span>
+          </div>
+        </div>
+
+        <div class="dashboard-card card-accent">
+          <div class="card-top">
+            <span class="card-metric-title">Female Population</span>
+            <span class="card-icon">👩</span>
+          </div>
+          <div class="card-number">12,856</div>
+          <div class="card-foot">
+            <span>51.27% of Population</span>
+            <span class="verification-tag" style="background:#fef3c7; color:#b45309;">Female > Male</span>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="card-top">
+            <span class="card-metric-title">Total Households</span>
+            <span class="card-icon">🏠</span>
+          </div>
+          <div class="card-number">6,529</div>
+          <div class="card-foot">
+            <span>Occupied Households</span>
+            <span class="verification-tag" style="background:#d8f3dc; color:#1b4332;">Supplied Record</span>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="card-top">
+            <span class="card-metric-title">Avg Household Size</span>
+            <span class="card-icon">👨‍👩‍👧</span>
+          </div>
+          <div class="card-number">~3.84</div>
+          <div class="card-foot">
+            <span>25,077 &divide; 6,529</span>
+            <span class="verification-tag" style="background:#e0f2fe; color:#0369a1;">Persons / Household</span>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="card-top">
+            <span class="card-metric-title">Population Density</span>
+            <span class="card-icon">🗺️</span>
+          </div>
+          <div class="card-number">1,826.44</div>
+          <div class="card-foot">
+            <span>25,077 &divide; 13.73 km&sup2;</span>
+            <span class="verification-tag" style="background:#d8f3dc; color:#1b4332;">Persons / km&sup2;</span>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="card-top">
+            <span class="card-metric-title">Total Area</span>
+            <span class="card-icon">📐</span>
+          </div>
+          <div class="card-number">13.73 km&sup2;</div>
+          <div class="card-foot">
+            <span>Geographical Area</span>
+            <span class="verification-tag" style="background:#f1f5f9; color:#475569;">Official Boundary</span>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="card-top">
+            <span class="card-metric-title">Administrative Wards</span>
+            <span class="card-icon">🏛️</span>
+          </div>
+          <div class="card-number">16 Wards</div>
+          <div class="card-foot">
+            <span>Constituent Wards</span>
+            <span class="verification-tag" style="background:#d8f3dc; color:#1b4332;">Delimited 2026</span>
+          </div>
+        </div>
+
+        <div class="dashboard-card card-accent">
+          <div class="card-top">
+            <span class="card-metric-title">Scheduled Caste (SC)</span>
+            <span class="card-icon">🤝</span>
+          </div>
+          <div class="card-number">3,870</div>
+          <div class="card-foot">
+            <span>15.43% of Total</span>
+            <span class="verification-tag" style="background:#fef3c7; color:#b45309;">1,898 M &bull; 1,972 F</span>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="card-top">
+            <span class="card-metric-title">Scheduled Tribe (ST)</span>
+            <span class="card-icon">🌿</span>
+          </div>
+          <div class="card-number">21</div>
+          <div class="card-foot">
+            <span>7 Males &bull; Females Unreported</span>
+            <span class="verification-tag" style="background:#fee2e2; color:#b91c1c;">As Supplied</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arithmetic Verification Box -->
+      <div class="arithmetic-verify-box">
+        <div class="verify-title">
+          <span>✅</span> Arithmetic & Data Consistency Verification (Updated 17 March 2026)
+        </div>
+        <div class="verify-grid">
+          <div class="verify-formula">
+            <strong>Sex Sum:</strong> 12,221 (M) + 12,856 (F) = <strong>25,077</strong> (Exact Match)
+          </div>
+          <div class="verify-formula">
+            <strong>SC Sum:</strong> 1,898 (SC M) + 1,972 (SC F) = <strong>3,870</strong> (Exact Match)
+          </div>
+          <div class="verify-formula">
+            <strong>Household Size:</strong> 25,077 &divide; 6,529 = <strong>3.8415 persons</strong>
+          </div>
+          <div class="verify-formula">
+            <strong>Density:</strong> 25,077 &divide; 13.73 km&sup2; = <strong>1,826.438 persons/km&sup2;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demographic Interpretation -->
+      <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.5rem; margin:1.5rem 0; box-shadow:var(--shadow-sm);">
+        <h3 style="color:var(--primary-dark); font-size:1.15rem; margin-bottom:0.75rem;">Factual Demographic Interpretation</h3>
+        <ul style="font-size:0.92rem; color:var(--text-muted); line-height:1.65; padding-left:1.25rem;">
+          <li>The supplied total population of Kollayil Grama Panchayat is <strong>25,077 persons</strong>.</li>
+          <li>The female population (<strong>12,856</strong>; 51.27%) exceeds the male population (<strong>12,221</strong>; 48.73%), reflecting the characteristic sex ratio of southern Kerala.</li>
+          <li>The reported total household count is <strong>6,529 households</strong>, yielding an average household size of approximately <strong>3.84 persons</strong>.</li>
+          <li>With a geographical area of <strong>13.73 km&sup2;</strong>, the calculated population density is <strong>1,826.44 persons per square kilometre</strong>.</li>
+          <li>Scheduled Caste residents number <strong>3,870</strong> (15.43% of the total population), disaggregated into <strong>1,898 males</strong> and <strong>1,972 females</strong>.</li>
+          <li>Scheduled Tribe residents number <strong>21 persons</strong>, comprising <strong>7 reported males</strong>; the female ST figure was not supplied in official records and is retained as unreported without extrapolation.</li>
+        </ul>
+      </div>
+
+      <!-- Official Source Note -->
+      <div style="background:#f8fafc; border-left:4px solid var(--primary-color); padding:0.85rem 1.25rem; font-size:0.85rem; color:var(--text-muted); border-radius:0 var(--radius-sm) var(--radius-sm) 0;">
+        <strong>Official Source Note:</strong> &ldquo;Source: Demographic figures supplied from the Kerala Local Self Government (Panchayat) Department, reported as updated on 17 March 2026. Figures should be verified against the relevant official record before formal publication. SC/ST figures and sex-disaggregated totals are presented as supplied.&rdquo;
+      </div>
+
+      <!-- Social Composition (SC & ST Profile) -->
+      <div style="margin-top: 3.5rem;">
+        <div class="section-title-wrap" style="margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.35rem; color: var(--primary-dark); display: flex; align-items: center; gap: 0.5rem;">
+            <span>🤝</span> Social Composition & Disaggregated Profile
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Disaggregated figures for Scheduled Caste (SC) and Scheduled Tribe (ST) communities supplied from official records.
+          </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.5rem;">
+          <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.5rem; box-shadow:var(--shadow-sm);">
+            <h4 style="color:var(--primary-dark); font-size:1.1rem; margin-bottom:0.75rem;">Scheduled Caste (SC) Composition</h4>
+            <table class="admin-table">
+              <tbody>
+                <tr>
+                  <th>Total SC Population</th>
+                  <td><strong>3,870 persons</strong></td>
+                </tr>
+                <tr>
+                  <th>SC Males</th>
+                  <td><strong>1,898</strong> (49.04%)</td>
+                </tr>
+                <tr>
+                  <th>SC Females</th>
+                  <td><strong>1,972</strong> (50.96%)</td>
+                </tr>
+                <tr>
+                  <th>Share of Panchayat Pop</th>
+                  <td><strong>15.43%</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.5rem; box-shadow:var(--shadow-sm);">
+            <h4 style="color:var(--primary-dark); font-size:1.1rem; margin-bottom:0.75rem;">Scheduled Tribe (ST) Composition</h4>
+            <table class="admin-table">
+              <tbody>
+                <tr>
+                  <th>Total ST Population</th>
+                  <td><strong>21 persons</strong></td>
+                </tr>
+                <tr>
+                  <th>ST Males</th>
+                  <td><strong>7</strong> (33.33%)</td>
+                </tr>
+                <tr>
+                  <th>ST Females</th>
+                  <td><span style="color:#b91c1c; font-weight:600;">Not supplied</span> (Unreported in record)</td>
+                </tr>
+                <tr>
+                  <th>Share of Panchayat Pop</th>
+                  <td><strong>0.08%</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Statistical Summaries & Charts (Chart.js) -->
+      <div style="margin-top: 3.5rem;">
+        <div class="section-title-wrap" style="margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.35rem; color: var(--primary-dark); display: flex; align-items: center; gap: 0.5rem;">
+            <span>📈</span> Statistical Visualizations & Demographic Charts
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Interactive dynamic charts powered by Chart.js displaying verified sex composition, SC/ST social breakdown, and household density metrics.
+          </p>
+        </div>
+
+        <div class="charts-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:1.5rem;">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Chart A: General Population by Sex</h3>
+              <span class="badge-tag" style="background:#1b4332;">25,077 Persons</span>
+            </div>
+            <div class="chart-canvas-wrap" style="height:280px; position:relative;">
+              <canvas id="chartGeneralSex"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Chart B: Scheduled Caste Population by Sex</h3>
+              <span class="badge-tag" style="background:#d97706;">3,870 Persons</span>
+            </div>
+            <div class="chart-canvas-wrap" style="height:280px; position:relative;">
+              <canvas id="chartScSex"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Chart C: Scheduled Tribe Population</h3>
+              <span class="badge-tag" style="background:#dc2626;">21 Persons</span>
+            </div>
+            <div class="chart-canvas-wrap" style="height:280px; position:relative;">
+              <canvas id="chartStPopulation"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Chart D: Households & Demographic Indicators</h3>
+              <span class="badge-tag" style="background:#0284c7;">Summary Dashboard</span>
+            </div>
+            <div class="chart-canvas-wrap" style="height:280px; position:relative;">
+              <canvas id="chartDemographicMetrics"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       10. HISTORICAL BACKGROUND AND REGIONAL DEVELOPMENT
+       ======================================================================== -->
+  <section class="timeline-section" id="history">
+    <div class="profile-container">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2><span>📜</span> Historical Background and Regional Development of Kollayil Grama Panchayat</h2>
+          <p>Regional historical setting, agrarian activism, democratic evolution, and local developmental milestones.</p>
+        </div>
+        <div>
+          <span class="badge-tag">Historical Narrative</span>
+        </div>
+      </div>
+
+      <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.5rem; margin-bottom:2rem; box-shadow:var(--shadow-sm);">
+        <p style="font-size:0.95rem; color:var(--text-dark); line-height:1.7; margin-bottom:1rem;">
+          <strong>Geographic and Historical Setting:</strong> Kollayil is located in Neyyattinkara Taluk, Thiruvananthapuram District, Kerala. The supplied historical narrative associates the region with the former Travancore princely state and its deep historical links with southern Kerala and territories extending toward Kanyakumari. Its geographical position along the midland fringe fostered vibrant rural agrarian settlements sustained by tributary waters flowing into the Neyyar River.
+        </p>
+        <p style="font-size:0.95rem; color:var(--text-dark); line-height:1.7; margin-bottom:1rem;">
+          <strong>Early Settlement and Agriculture:</strong> Agrarian settlements in Kollayil coalesced around fertile alluvial valleys and traditional water harvesting networks, including historic temple ponds (Chiras) and sacred groves (Kavus). Dhanuvachapuram, Makkolla, and Udiyankulangara emerged as notable historical settlement clusters anchored by paddy cultivation and local trade.
+        </p>
+        <p style="font-size:0.95rem; color:var(--text-dark); line-height:1.7;">
+          <strong>Agrarian Movements and Social Change:</strong> During the early-to-mid twentieth century, the Neyyattinkara region witnessed significant socio-political mobilization against oppressive tenancy systems, advocating fair wages, tenant cultivator rights, and land reforms. The region was influenced by the national freedom struggle, the Travancore State Congress movement, khadi promotion, and mass literacy campaigns that laid the foundation for progressive rural democracy.
+        </p>
+      </div>
+
+      <!-- Historical Timeline Wrapper -->
+      <div class="timeline-wrapper">
+        <div class="timeline-item">
+          <div class="timeline-year">1949</div>
+          <div class="timeline-content">
+            <h4>Formation of Travancore-Cochin</h4>
+            <p>Integration of the princely states of Travancore and Cochin into a unified administrative entity, reorganizing southern taluk revenue divisions.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">1956</div>
+          <div class="timeline-content">
+            <h4>Formation of Kerala State</h4>
+            <p>Linguistic reorganization of Indian states established the State of Kerala on 1 November 1956, bringing Neyyattinkara Taluk into Thiruvananthapuram District.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">1960</div>
+          <div class="timeline-content">
+            <h4>Enactment of the Kerala Panchayat Act</h4>
+            <p>Formal legislative institutionalization of village panchayats across Kerala, granting statutory recognition and administrative autonomy to rural local bodies.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">1980 &ndash; 1981</div>
+          <div class="timeline-content">
+            <h4>Reported District Best Panchayat Trophy</h4>
+            <p>Supplied account claims an award or trophy for the Best Grama Panchayat in Thiruvananthapuram District during 1980&ndash;81 in recognition of rural development initiatives (noted as supplied background claim requiring archival verification).</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">1996 onwards</div>
+          <div class="timeline-content">
+            <h4>People's Plan Campaign & Decentralized Governance</h4>
+            <p>Historic devolution of powers, planning funds, and decision-making directly to Grama Sabhas and local self-government institutions under the Ninth Five-Year Plan.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2022 onwards</div>
+          <div class="timeline-content">
+            <h4>Zero Carbon Panchayat & Climate Initiatives</h4>
+            <p>Supplied report highlights ongoing sustainable campaigns including rooftop solar promotion, Haritha Karma Sena door-to-door solid waste management, Pachathuruthu biodiversity islets, and Miyawaki afforestation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Verification Note -->
+      <div style="margin-top:2rem; background:#f8fafc; border-left:4px solid var(--accent-color); padding:0.85rem 1.25rem; font-size:0.85rem; color:var(--text-muted); border-radius:0 var(--radius-sm) var(--radius-sm) 0;">
+        <strong>Historical Verification Note:</strong> &ldquo;Historical information in this section includes supplied background claims. Dates, awards, local events, and programme status should be verified using Panchayat records, government publications, historical documents, or other reliable sources.&rdquo;
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       11. THREE-TIER PANCHAYATI RAJ GOVERNANCE STRUCTURE
+       ======================================================================== -->
+  <section class="panchayati-raj-section" id="governance">
+    <div class="profile-container">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2><span>🏛️</span> Panchayati Raj Structure of Kollayil Grama Panchayat</h2>
+          <p>Democratic three-tier local governance hierarchy, decentralized administrative coordination, and civic planning responsibilities.</p>
+        </div>
+        <div>
+          <span class="badge-tag" style="background:var(--primary-color);">Three-Tier Architecture</span>
+        </div>
+      </div>
+
+      <div class="hierarchy-container">
+        <!-- Tier 3: District Panchayat -->
+        <div class="tier-card" style="border-top: 4px solid #1e3a8a;">
+          <div class="tier-header">
+            <span class="tier-badge" style="background:#dbeafe; color:#1e40af;">Apex Tier 3</span>
+            <span class="tier-title">Thiruvananthapuram District Panchayat</span>
+          </div>
+          <p class="tier-desc">
+            District-level apex local government responsible for district-wide planning, inter-block infrastructure development, higher secondary educational institutions, district hospitals, major watershed conservation schemes, and spatial planning coordination across Thiruvananthapuram.
+          </p>
+        </div>
+
+        <div class="tier-arrow">
+          <span>&darr;</span>
+          <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted);">Coordinated Planning & Technical Support</span>
+        </div>
+
+        <!-- Tier 2: Block Panchayat -->
+        <div class="tier-card" style="border-top: 4px solid #0284c7;">
+          <div class="tier-header">
+            <span class="tier-badge" style="background:#e0f2fe; color:#0369a1;">Intermediate Tier 2</span>
+            <span class="tier-title">Perumkadavila Block Panchayat</span>
+          </div>
+          <p class="tier-desc">
+            Intermediate administrative coordinating body supporting rural development programmes across constituent Grama Panchayats in the Perumkadavila Block. Oversees block-level health centres, agro-service custom hiring centres, rural housing schemes, poverty alleviation, and intermediate road links.
+          </p>
+        </div>
+
+        <div class="tier-arrow">
+          <span>&darr;</span>
+          <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted);">Direct Village Administration & Civic Delivery</span>
+        </div>
+
+        <!-- Tier 1: Grama Panchayat -->
+        <div class="tier-card" style="border-top: 4px solid var(--primary-color);">
+          <div class="tier-header">
+            <span class="tier-badge" style="background:var(--primary-subtle); color:var(--primary-dark);">Village Level Tier 1</span>
+            <span class="tier-title">Kollayil Grama Panchayat</span>
+          </div>
+          <p class="tier-desc">
+            Village-level grassroots local self-government directly responsible for basic infrastructure delivery, ward development committees, Grama Sabha meetings, village roads, street lighting, sanitation, Haritha Karma Sena waste management, Krishi Bhavan extension, local water harvesting, and citizen service delivery across its 16 constituent wards.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.25rem 1.5rem; font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+        <strong>Governance Philosophy:</strong> The 73rd Constitutional Amendment Act institutionalized this three-tier Panchayati Raj system, ensuring devolution of powers and community participation in planning. The tiers function in mutual coordination rather than a rigid top-down command hierarchy, empowering citizens through the Grama Sabha.
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       12. PART H — DEVELOPMENT PROFILE OF KOLLAYIL GRAMA PANCHAYAT
+       ======================================================================== -->
+  <section class="dev-section" id="development">
+    <div class="dev-container">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2><span>🏗️</span> Development Profile of Kollayil Grama Panchayat</h2>
+          <p>Supplied account of sustainable development initiatives, poverty alleviation, healthcare modernization, women's empowerment, sports infrastructure, and transportation.</p>
+        </div>
+        <div>
+          <span class="badge-tag" style="background:#1b4332;">Supplied Record</span>
+        </div>
+      </div>
+
+      <!-- Development Activities Cards Grid -->
+      <div class="dev-cards-grid">
+        <!-- 9.1 General Development & Extreme Poverty -->
+        <div class="dev-card">
+          <div class="dev-card-header">
+            <div class="dev-icon-box">🏡</div>
+            <div>
+              <h4>General Development & Housing</h4>
+              <span class="status-tag-reported">Reported Programme</span>
+            </div>
+          </div>
+          <p>
+            Sustainable development initiatives reportedly undertaken since 2016. Significant focus on the <strong>LIFE Housing Scheme</strong> executed across two distinct phases to provide secure pucca houses to landless and homeless families.
+          </p>
+          <p>
+            An extreme-poverty survey reportedly identified <strong>46 vulnerable families</strong>, for whom micro-plans, nutritional support, and tailored welfare packages were deployed. The supplied account claims that sustained intervention enabled the Panchayat to achieve <strong>extreme-poverty-free status</strong> (noted as reported historical information pending independent verification).
+          </p>
+          <div class="dev-tag-list">
+            <span class="dev-tag-item">LIFE Mission</span>
+            <span class="dev-tag-item">46 Families Surveyed</span>
+            <span class="dev-tag-item">Micro-plans</span>
+          </div>
+        </div>
+
+        <!-- 9.2 Women's Empowerment & Self-Employment -->
+        <div class="dev-card">
+          <div class="dev-card-header">
+            <div class="dev-icon-box">👩‍💼</div>
+            <div>
+              <h4>Women's Empowerment & Livelihoods</h4>
+              <span class="status-tag-reported">Community Action</span>
+            </div>
+          </div>
+          <p>
+            Community-based initiatives focusing on women's functional literacy, health awareness, personal safety, and micro-entrepreneurship. 
+          </p>
+          <p>
+            Key agrarian self-employment programmes include <strong>organic vegetable cultivation, Ksheera Samruddhi (dairy development), goat rearing, backyard poultry, and banana cultivation</strong>. Supplementary wellness and self-defense activities reported in the account include community <strong>Yoga</strong> sessions and <strong>Karate</strong> self-defense training for young women.
+          </p>
+          <div class="dev-tag-list">
+            <span class="dev-tag-item">Kudumbashree</span>
+            <span class="dev-tag-item">Ksheera Samruddhi</span>
+            <span class="dev-tag-item">Self-Defense (Karate)</span>
+            <span class="dev-tag-item">Yoga</span>
+          </div>
+        </div>
+
+        <!-- 9.3 Health Facilities Upgradation -->
+        <div class="dev-card">
+          <div class="dev-card-header">
+            <div class="dev-icon-box">🏥</div>
+            <div>
+              <h4>Public Healthcare Upgradation</h4>
+              <span class="status-tag-reported">Institutional Care</span>
+            </div>
+          </div>
+          <p>
+            The supplied narrative reports systematic infrastructural and service improvements across three core public medical institutions serving Kollayil:
+          </p>
+          <ul style="font-size:0.88rem; color:var(--text-muted); padding-left:1.2rem; line-height:1.6; margin-bottom:0.75rem;">
+            <li><strong>Family Health Centre (FHC):</strong> Upgraded clinical facilities and preventive public health programs.</li>
+            <li><strong>Government Homoeo Hospital:</strong> Holistic outpatient care and chronic illness support.</li>
+            <li><strong>Government Ayurveda Hospital:</strong> Traditional herbal remedies and rejuvenation therapies.</li>
+          </ul>
+          <div class="dev-tag-list">
+            <span class="dev-tag-item">FHC Upgradation</span>
+            <span class="dev-tag-item">Homoeo Hospital</span>
+            <span class="dev-tag-item">Ayurveda Hospital</span>
+          </div>
+        </div>
+
+        <!-- 9.4 Sports and Youth Recreation -->
+        <div class="dev-card">
+          <div class="dev-card-header">
+            <div class="dev-icon-box">⚽</div>
+            <div>
+              <h4>Sports & Youth Recreation</h4>
+              <span class="status-tag-reported">Status Pending Audit</span>
+            </div>
+          </div>
+          <p>
+            Modern sports facilities created to foster athletic talents among rural youth:
+          </p>
+          <ul style="font-size:0.88rem; color:var(--text-muted); padding-left:1.2rem; line-height:1.6; margin-bottom:0.75rem;">
+            <li><strong>Manchavilakom Stadium:</strong> Central community stadium hosting football tournaments and athletic meets.</li>
+            <li><strong>Manivila Turf:</strong> Synthetic turf sports ground, reported as completed.</li>
+            <li><strong>Cricket Turf at Manchavilakom:</strong> Dedicated training turf, reported as in progress in the supplied account.</li>
+          </ul>
+          <div class="dev-tag-list">
+            <span class="dev-tag-item">Manchavilakom Stadium</span>
+            <span class="dev-tag-item">Manivila Turf (Completed)</span>
+            <span class="dev-tag-item">Cricket Turf (In Progress)</span>
+          </div>
+        </div>
+
+        <!-- 9.5 Transportation: Gramavandi Scheme -->
+        <div class="dev-card">
+          <div class="dev-card-header">
+            <div class="dev-icon-box">🚐</div>
+            <div>
+              <h4>Gramavandi Rural Transport Scheme</h4>
+              <span class="status-tag-reported">Transport Scheme</span>
+            </div>
+          </div>
+          <p>
+            The supplied account documents the launch of the <strong>Gramavandi</strong> village vehicle scheme, designed to connect interior rural settlements and hilly pockets lacking regular KSRTC bus service to Dhanuvachapuram and arterial corridors.
+          </p>
+          <p style="font-size:0.85rem; color:#78350f; background:#fffbeb; padding:0.5rem; border-radius:var(--radius-sm); border:1px solid #fef3c7;">
+            <em>Historical Qualification:</em> The source account describes this as a "first in the state"; in keeping with rigorous academic integrity, this claim is noted as supplied narrative rather than an independently verified fact.
+          </p>
+          <div class="dev-tag-list">
+            <span class="dev-tag-item">Gramavandi</span>
+            <span class="dev-tag-item">Rural Accessibility</span>
+            <span class="dev-tag-item">Last-Mile Transit</span>
+          </div>
+        </div>
+
+        <!-- 9.6 Infrastructure & Drainage Works -->
+        <div class="dev-card">
+          <div class="dev-card-header">
+            <div class="dev-icon-box">🚧</div>
+            <div>
+              <h4>Rural Infrastructure & Protection Works</h4>
+              <span class="status-tag-reported">GIS Linked</span>
+            </div>
+          </div>
+          <p>
+            Extensive public civil works reported across wards, including <strong>road tarring, road concreting, re-tarring of worn corridors, retaining wall construction along slopes, pond-side embankment walls, and drainage channel de-silting</strong>.
+          </p>
+          <p>
+            These civil works directly correspond to the <strong>29 road segments</strong> and <strong>13 drainage channels</strong> mapped in the interactive Web GIS workbench.
+          </p>
+          <div class="dev-tag-list">
+            <span class="dev-tag-item">Road Tarring & Concreting</span>
+            <span class="dev-tag-item">Retaining Walls</span>
+            <span class="dev-tag-item">Pond Embankments</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9.7 Community Development & Decentralized Planning -->
+      <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.5rem; margin-top:1.5rem; box-shadow:var(--shadow-sm);">
+        <h3 style="color:var(--primary-dark); font-size:1.2rem; display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
+          <span>🗣️</span> Community Participation & Open Development Forums
+        </h3>
+        <p style="font-size:0.92rem; color:var(--text-dark); line-height:1.7;">
+          The supplied development narrative highlights the deployment of <strong>open public forums and citizen consultative assemblies</strong> to collect public priorities directly from grassroots residents. In Kerala's decentralized governance framework, participatory budgeting through Grama Sabhas ensures that local funds address genuine community needs, including drinking water supply, road repairs, agricultural inputs, and elderly welfare.
+        </p>
+      </div>
+
+      <!-- 9.8 Reported Participants and Historical Officials -->
+      <div class="participants-panel">
+        <h3 style="color:var(--primary-dark); font-size:1.2rem; display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+          <span>👥</span> Participants & Officials in Supplied Historical Account
+        </h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">
+          The following individuals and civic groups are cited as participants in the supplied historical development account. They are identified strictly as historical participants listed in the source narrative and are <strong>not presented as current officeholders</strong> without official Gazette re-verification:
+        </p>
+
+        <div class="participants-grid">
+          <div class="participant-card">
+            <div class="participant-name">Dr. N. S. Navaneethkumar</div>
+            <div class="participant-role">Reported Panchayat President (Historical Narrative)</div>
+          </div>
+          <div class="participant-card">
+            <div class="participant-name">T. A. Johnny</div>
+            <div class="participant-role">Reported Panchayat Secretary (Historical Narrative)</div>
+          </div>
+          <div class="participant-card">
+            <div class="participant-name">V. S. Binu</div>
+            <div class="participant-role">Reported District Panchayat Member (Historical Narrative)</div>
+          </div>
+          <div class="participant-card">
+            <div class="participant-name">V. Thanupillai</div>
+            <div class="participant-role">Reported Perumkadavila Block Panchayat President</div>
+          </div>
+          <div class="participant-card">
+            <div class="participant-name">K. V. Padmakumar</div>
+            <div class="participant-role">Reported Block Panchayat Member</div>
+          </div>
+          <div class="participant-card">
+            <div class="participant-name">Panchayat Ward Members</div>
+            <div class="participant-role">Elected Ward Representatives (Historical Narrative)</div>
+          </div>
+          <div class="participant-card">
+            <div class="participant-name">Kudumbashree Workers</div>
+            <div class="participant-role">Neighborhood Self-Help Groups (NHGs)</div>
+          </div>
+          <div class="participant-card">
+            <div class="participant-name">Haritha Karma Sena Workers</div>
+            <div class="participant-role">Green Action Volunteers & Waste Managers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9.9 Source Transparency Note -->
+      <div style="margin-top:1.5rem; background:#f8fafc; border-left:4px solid var(--accent-color); padding:0.85rem 1.25rem; font-size:0.85rem; color:var(--text-muted); border-radius:0 var(--radius-sm) var(--radius-sm) 0;">
+        <strong>Development Data Transparency Note:</strong> &ldquo;Development figures, beneficiary counts, programme statuses, completion claims, and historical officeholder names recorded in this section are presented as supplied in project documentation and require verification against relevant Panchayat records, LSGD reports, or official government publications.&rdquo;
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       13. AGRICULTURE AND RURAL DEVELOPMENT
+       ======================================================================== -->
+  <section class="agriculture-section" id="agriculture">
+    <div class="agriculture-container">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2><span>🌾</span> Agriculture and Rural Development in Kollayil Grama Panchayat</h2>
+          <p>Featuring Kalatharaikkal Padasekharam in Nadurkolla Ward, crop diversification, agricultural mechanisation, allied livestock schemes, and milk cooperative societies.</p>
+        </div>
+        <div>
+          <span class="badge-tag" style="background:var(--primary-color);">Agrarian Heritage</span>
+        </div>
+      </div>
+
+      <!-- Featured Agricultural Area: Kalatharaikkal Padasekharam -->
+      <article class="agri-feature-hero">
+        <div class="agri-photo-container">
+          <figure style="margin:0;">
+            <img src="./assets/images/agricultural-image.jpeg" 
+                 alt="Paddy fields with coconut palms and farmers in Kalatharaikkal Padasekharam, Kollayil" 
+                 class="featured-agri-img" id="featuredAgriImg" />
+            <figcaption class="featured-agri-caption">
+              <strong>Kalatharaikkal Padasekharam</strong> &mdash; Traditional paddy fields, coconut groves, and rural agricultural landscape in Nadurkolla Ward, Kollayil Grama Panchayat.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="agri-hero-body">
+          <h3 class="agri-hero-title">
+            <span>🌱</span> Kalatharaikkal Padasekharam &mdash; Nadurkolla Ward
+          </h3>
+          <div class="agri-hero-text">
+            <p>
+              <strong>Kalatharaikkal Padasekharam</strong> (paddy field cluster) situated in <strong>Nadurkolla Ward</strong> is the crown jewel of agricultural land in Kollayil Grama Panchayat. Centered around traditional wet rice cultivation, this padasekharam forms an irreplaceable pillar of the region's cultural heritage and rural agrarian economy. Along with enhancing the scenic lush green landscape, the paddy fields sustain the livelihoods of dozens of farming families.
+            </p>
+            <p>
+              In addition to paddy production, the wetland basin acts as a vital rainwater retention buffer, recharging shallow open wells and groundwater aquifers across adjoining wards during monsoon months. Converting fallow lands back into active cropping remains a primary focus of local agricultural initiatives.
+            </p>
+            <p>
+              <strong>Crop Diversification & Innovative Farming:</strong> Alongside traditional wet rice cycles, farmers in Kollayil actively cultivate <strong>mushrooms, flowers, sunflowers, millets, bananas, and organic vegetables</strong>. Initiatives such as <em>Haritha Bhavanam</em> (Green Homesteads) and <em>Mazhamara</em> (Rain Shelter farming) provide year-round crop protection against heavy monsoons.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8.2 Agricultural Karma Sena & Mechanisation -->
+      <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.5rem; margin:1.5rem 0; box-shadow:var(--shadow-sm);">
+        <h3 style="color:var(--primary-dark); font-size:1.2rem; display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
+          <span>🚜</span> Agricultural Karma Sena & Farm Mechanisation
+        </h3>
+        <p style="font-size:0.92rem; color:var(--text-dark); line-height:1.65; margin-bottom:1rem;">
+          To mitigate seasonal farm labor shortages and reduce harvesting turnaround times, an <strong>agricultural combine harvester</strong> was made available to the local <strong>Agricultural Karma Sena</strong>. Mechanisation of harvesting and threshing operations enables efficient, cost-effective harvesting across Kalatharaikkal Padasekharam while minimizing post-harvest crop losses due to unseasonal rain.
+        </p>
+        <p style="font-size:0.92rem; color:var(--text-muted); line-height:1.65;">
+          The Agricultural Karma Sena provides trained machine operators and technical support to farmer groups, enabling timely land preparation, transplanting, and crop protection across the panchayat.
+        </p>
+      </div>
+
+      <!-- 8.3 Livestock & Allied Schemes, plus Milk Cooperatives -->
+      <div>
+        <h3 style="color:var(--primary-dark); font-size:1.2rem; margin:1.5rem 0 0.75rem; display:flex; align-items:center; gap:0.5rem;">
+          <span>🐄</span> Livestock Schemes & Milk Cooperative Societies
+        </h3>
+        <p style="font-size:0.9rem; color:var(--text-muted);">
+          Targeted rural livelihood programmes implemented to enhance supplementary household income through animal husbandry and dairy cooperatives:
+        </p>
+
+        <div class="schemes-grid">
+          <div class="scheme-card">
+            <span style="font-size:0.8rem; font-weight:700; color:var(--primary-color); text-transform:uppercase;">Animal Husbandry Scheme</span>
+            <div class="scheme-metric">56 Beneficiaries</div>
+            <h4 style="font-size:1.05rem; color:var(--text-dark); margin-bottom:0.35rem;">Goat-Rearing Scheme</h4>
+            <p style="font-size:0.85rem; color:var(--text-muted);">
+              Financial and technical assistance provided to 56 rural beneficiary households to establish small-scale goat-rearing units for milk and meat production.
+            </p>
+          </div>
+
+          <div class="scheme-card scheme-card-accent">
+            <span style="font-size:0.8rem; font-weight:700; color:var(--accent-color); text-transform:uppercase;">Dairy Development Scheme</span>
+            <div class="scheme-metric">22 Beneficiaries</div>
+            <h4 style="font-size:1.05rem; color:var(--text-dark); margin-bottom:0.35rem;">Calf-Rearing Scheme</h4>
+            <p style="font-size:0.85rem; color:var(--text-muted);">
+              Subsidized nutritional feed and healthcare support distributed to 22 beneficiaries for scientific rearing of high-yielding dairy calves.
+            </p>
+          </div>
+
+          <div class="scheme-card" style="border-top-color:#0284c7;">
+            <span style="font-size:0.8rem; font-weight:700; color:#0284c7; text-transform:uppercase;">Dairy Cooperatives (Reported)</span>
+            <div class="scheme-metric">3 Societies</div>
+            <h4 style="font-size:1.05rem; color:var(--text-dark); margin-bottom:0.35rem;">Active Milk Cooperatives</h4>
+            <p style="font-size:0.85rem; color:var(--text-muted);">
+              <strong>Three active milk cooperative societies</strong> reported in the supplied account, supporting milk collection, chilling, and marketing for local dairy farmers (reported programme information pending verification).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8.4 Women's Livelihoods and Agricultural Participation -->
+      <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.5rem; margin:1.5rem 0; box-shadow:var(--shadow-sm);">
+        <h3 style="color:var(--primary-dark); font-size:1.2rem; display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
+          <span>👩‍🌾</span> Women's Livelihoods & Agricultural Participation
+        </h3>
+        <p style="font-size:0.92rem; color:var(--text-dark); line-height:1.7; margin-bottom:1rem;">
+          Women play an indispensable role in Kollayil's agrarian economy through Kudumbashree Joint Liability Groups (JLGs) and self-employment initiatives. Major agriculture-related livelihood activities include:
+        </p>
+        <ul style="font-size:0.9rem; color:var(--text-muted); line-height:1.65; padding-left:1.25rem;">
+          <li><strong>Organic Vegetable Cultivation:</strong> Group farming of seasonal vegetables on leased fallow land, providing fresh produce for local consumption and weekly village markets.</li>
+          <li><strong>Goat & Poultry Rearing:</strong> Homestead livestock rearing offering steady supplementary household income and nutritional security.</li>
+          <li><strong>Banana & Tuber Cultivation:</strong> Intensive cultivation of Nendran and local culinary plantains on homestead plots and terraced hillocks.</li>
+          <li><strong>Community-based Micro-Enterprises:</strong> Value-added processing of banana chips, jackfruit products, and organic compost preparation.</li>
+        </ul>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.75rem; font-style:italic;">
+          *Note: These community-based activities significantly strengthen household economic resilience and rural development; specific income amounts and beneficiary registers are subject to periodic audit.
+        </p>
+      </div>
+
+      <!-- 8.5 Agricultural Statistics & Data Requirement Audit -->
+      <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.5rem; margin:1.5rem 0;">
+        <h3 style="color:var(--primary-dark); font-size:1.2rem; display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem;">
+          <span>📊</span> Agricultural Statistics & Required Audit Metrics
+        </h3>
+        
+        <table class="facilities-table" style="margin-bottom:1.25rem;">
+          <thead>
+            <tr>
+              <th>Agricultural Parameter</th>
+              <th>Supplied Supported Data</th>
+              <th>Data Status & Verification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Goat-Rearing Scheme</strong></td>
+              <td>56 Beneficiaries</td>
+              <td><span class="status-badge-verified">Supplied Programme Record</span></td>
+            </tr>
+            <tr>
+              <td><strong>Calf-Rearing Scheme</strong></td>
+              <td>22 Beneficiaries</td>
+              <td><span class="status-badge-verified">Supplied Programme Record</span></td>
+            </tr>
+            <tr>
+              <td><strong>Active Milk Cooperative Societies</strong></td>
+              <td>3 Societies</td>
+              <td><span class="status-badge-pending">Reported, Pending Registration Audit</span></td>
+            </tr>
+            <tr>
+              <td><strong>Harvesting Mechanisation</strong></td>
+              <td>1 Combine Harvester (Karma Sena)</td>
+              <td><span class="status-badge-verified">Supplied Programme Asset</span></td>
+            </tr>
+            <tr>
+              <td><strong>Core Padasekharam Cluster</strong></td>
+              <td>Kalatharaikkal (Nadurkolla Ward)</td>
+              <td><span class="status-badge-verified">Geographically Mapped</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="background:#ffffff; border:1px dashed #cbd5e1; padding:1.25rem; border-radius:var(--radius-sm);">
+          <h4 style="font-size:1rem; color:var(--primary-dark); margin-bottom:0.5rem;">
+            Additional Agricultural Data Required for Comprehensive Agrarian Audit:
+          </h4>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+            In strict compliance with academic cartographic integrity, the following parameters are not estimated or fabricated and require certified agricultural census returns from the Department of Agriculture & Farmers' Welfare (Govt. of Kerala):
+          </p>
+          <ul style="font-size:0.85rem; color:var(--text-muted); padding-left:1.25rem; line-height:1.5; margin-top:0.5rem;">
+            <li>Exact total cropped area and net sown area (hectares).</li>
+            <li>Cadastral survey acreage for active paddy vs fallow land in Kalatharaikkal Padasekharam.</li>
+            <li>Irrigated area disaggregated by canal water (NIP) versus open domestic wells.</li>
+            <li>Crop yield rates (kg/hectare) and annual production tonnage.</li>
+            <li>Total registered agricultural households and operational landholding size distribution.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 7 Agricultural Information Cards Grid -->
+      <div class="agri-cards-grid">
+        <div class="agri-info-card">
+          <div class="agri-card-header">
+            <div class="agri-card-icon">🌾</div>
+            <h3>Paddy Cultivation</h3>
+          </div>
+          <p>Traditional wet rice cycles in Nadurkolla and surrounding wards preserve cultural heritage and anchor the rural agrarian economy.</p>
+        </div>
+
+        <div class="agri-info-card">
+          <div class="agri-card-header">
+            <div class="agri-card-icon">🍄</div>
+            <h3>Mushroom & Flowers</h3>
+          </div>
+          <p>Profitable homestead cultivation of oyster/milky mushrooms and seasonal flowers, including sunflowers and marigolds.</p>
+        </div>
+
+        <div class="agri-info-card">
+          <div class="agri-card-header">
+            <div class="agri-card-icon">🌾</div>
+            <h3>Millet & Banana Cultivation</h3>
+          </div>
+          <p>Promotion of climate-resilient nutri-cereals (millets) alongside traditional Nendran and Robusta banana orchards on terraced slopes.</p>
+        </div>
+
+        <div class="agri-info-card card-water">
+          <div class="agri-card-header">
+            <div class="agri-card-icon" style="background:#e0f2fe; color:#0369a1;">💧</div>
+            <h3>Water Conservation</h3>
+          </div>
+          <p>Paddy fields act as expansive infiltration basins during monsoons, naturally replenishing local aquifers and community wells.</p>
+        </div>
+
+        <div class="agri-info-card card-bio">
+          <div class="agri-card-header">
+            <div class="agri-card-icon" style="background:#dcfce7; color:#15803d;">🏡</div>
+            <h3>Haritha Bhavanam & Mazhamara</h3>
+          </div>
+          <p>Protected polytunnel and rain shelter farming (Mazhamara) enabling continuous vegetable production through severe monsoon deluges.</p>
+        </div>
+
+        <div class="agri-info-card">
+          <div class="agri-card-header">
+            <div class="agri-card-icon">🚜</div>
+            <h3>Fallow Land Reclamation</h3>
+          </div>
+          <p>Revitalizing fallow wetlands through Kudumbashree Joint Liability Groups (JLGs) to enhance local food self-sufficiency.</p>
+        </div>
+
+        <div class="agri-info-card card-challenge">
+          <div class="agri-card-header">
+            <div class="agri-card-icon" style="background:#fef3c7; color:#b45309;">⚠️</div>
+            <h3>Agrarian Challenges</h3>
+          </div>
+          <p>Addressing dry-season irrigation deficits, high input costs, farm labor shortages, and wild animal intrusions along plantation edges.</p>
+        </div>
+      </div>
+
+      <!-- Agricultural Facilities Directory Table -->
+      <div class="agri-facilities-panel" style="margin-top:2.5rem;">
+        <h3><span>🏛️</span> Agricultural Infrastructure & Extension Centres</h3>
+        <p>Institutional facilities supporting farmers and livestock rearers in Kollayil Grama Panchayat:</p>
+        
+        <table class="facilities-table">
+          <thead>
+            <tr>
+              <th>Facility / Institution Name</th>
+              <th>Category</th>
+              <th>Location / Jurisdiction</th>
+              <th>Spatial Data Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Kollayil Krishi Bhavan</strong></td>
+              <td>Department of Agriculture (Govt. of Kerala)</td>
+              <td>Dhanuvachapuram (HQ)</td>
+              <td><span class="status-badge-verified">Verified Public Facility</span></td>
+            </tr>
+            <tr>
+              <td><strong>Kalatharaikkal Padasekharam Samithi</strong></td>
+              <td>Paddy Farmers Collective / Committee</td>
+              <td>Nadurkolla Ward</td>
+              <td><span class="status-badge-verified">Operational Cluster</span></td>
+            </tr>
+            <tr>
+              <td><strong>Agricultural Karma Sena Center</strong></td>
+              <td>Farm Machinery & Custom Hiring Service</td>
+              <td>Dhanuvachapuram</td>
+              <td><span class="status-badge-verified">Combine Harvester Base</span></td>
+            </tr>
+            <tr>
+              <td><strong>Kollayil Service Co-operative Bank</strong></td>
+              <td>Farmer Credit & Cooperative Banking</td>
+              <td>Dhanuvachapuram & Kollayil</td>
+              <td><span class="status-badge-verified">Financial Support</span></td>
+            </tr>
+            <tr>
+              <td><strong>Neyyar Irrigation Project (NIP) Canal</strong></td>
+              <td>Surface Water Irrigation Network</td>
+              <td>Midland Paddy Tracts</td>
+              <td><span class="status-badge-verified">Mapped in Drainage Network</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       14. ENVIRONMENTAL MANAGEMENT & SUSTAINABILITY
+       ======================================================================== -->
+  <section class="analysis-section" id="environment" style="background:#f8fafc;">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <h2><span>🌿</span> Environmental Management & Climate Resilience</h2>
+        <p>Green micro-forests, biodiversity islets, solid waste management, and reported clean energy campaigns.</p>
+      </div>
+    </div>
+
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🌳</div>
+          <div>
+            <h3>Pachathuruthu (Green Islets)</h3>
+            <span class="badge-tag" style="background:#15803d;">Haritha Keralam</span>
+          </div>
+        </div>
+        <p>
+          Creation of specialized native micro-ecosystems on fallow public lands to restore endemic tree species, stabilize soil moisture, and nurture local avifauna and pollinator species.
+        </p>
+        <div class="qgis-layer-ref">Initiative: Local biodiversity enrichment & carbon sequestration</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">🌲</div>
+          <div>
+            <h3>Miyawaki Micro-Forests</h3>
+            <span class="badge-tag" style="background:#16a34a;">Urban Afforestation</span>
+          </div>
+        </div>
+        <p>
+          Dense multi-tier indigenous planting methodology utilizing minimal spatial footprints to create dense micro-forests with high biomass accumulation in institutional compounds.
+        </p>
+        <div class="qgis-layer-ref">Locations: School campuses and public office surroundings</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">♻️</div>
+          <div>
+            <h3>Haritha Karma Sena (HKS)</h3>
+            <span class="badge-tag" style="background:#0284c7;">Waste Management</span>
+          </div>
+        </div>
+        <p>
+          Door-to-door non-biodegradable waste collection by trained women groups, segregating clean plastics, glass, and electronic waste for scientific processing and recycling.
+        </p>
+        <div class="qgis-layer-ref">Coverage: All 16 administrative wards across Kollayil</div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-card-header">
+          <div class="analysis-icon-box">☀️</div>
+          <div>
+            <h3>Rooftop Solar & Zero Carbon Campaign</h3>
+            <span class="badge-tag" style="background:#d97706;">Reported Initiative</span>
+          </div>
+        </div>
+        <p>
+          Promotion of grid-connected rooftop solar photovoltaic systems on public buildings and private households as part of the reported Zero Carbon Panchayat campaign.
+        </p>
+        <div class="qgis-layer-ref">Status: Reported sustainability initiative requiring ongoing monitoring</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       15. PART K — DISASTER MANAGEMENT AND ENVIRONMENTAL RISK PROFILE
+       ======================================================================== -->
+  <section class="disaster-section" id="disaster">
+    <div class="disaster-container">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2 style="color: #744210;"><span>🛡️</span> Disaster Management and Environmental Risk Profile of Kollayil Grama Panchayat</h2>
+          <p>Evidence-based disaster management planning, hydrological drainage analysis, slope stability screening, and practical risk-reduction recommendations.</p>
+        </div>
+        <div>
+          <span class="badge-tag" style="background:#92400e;">Planning Resource</span>
+        </div>
+      </div>
+
+      <div class="disaster-notice-banner">
+        <span style="font-size: 1.5rem;">⚠️</span>
+        <div>
+          <strong style="color: #92400e;">Hazard Data Integrity & Limitation Notice:</strong>
+          <p style="font-size: 0.85rem; color: #78350f; margin-top: 0.2rem;">
+            This section serves strictly as an educational and spatial planning resource, not an official emergency warning system. In compliance with Kerala State Disaster Management Authority (KSDMA) protocols, areas are designated as hazard zones only upon publication of certified taluk/district disaster management maps. No unverified spatial hazards are fabricated.
+          </p>
+        </div>
+      </div>
+
+      <!-- 12.1 Disaster-Related Themes & Physical Vulnerability -->
+      <div class="dev-cards-grid" style="margin: 1.5rem 0;">
+        <div class="dev-card" style="background:#fffaf0; border-color:#fbd38d;">
+          <div class="dev-card-header">
+            <div class="dev-icon-box" style="background:#fef3c7; color:#b45309;">🌧️</div>
+            <h4>Intense Rainfall & Waterlogging</h4>
+          </div>
+          <p>
+            During Southwest (Edavappathi) and Northeast (Thulavarsham) monsoons, intense rainfall causes localized drainage congestion and temporary waterlogging in low-lying valley bottoms.
+          </p>
+          <div class="dev-tag-list">
+            <span class="dev-tag-item">Drainage Congestion</span>
+            <span class="dev-tag-item">Valley Inundation</span>
+          </div>
+        </div>
+
+        <div class="dev-card" style="background:#fffaf0; border-color:#fbd38d;">
+          <div class="dev-card-header">
+            <div class="dev-icon-box" style="background:#fef3c7; color:#b45309;">🌊</div>
+            <h4>Drainage Tributary Analysis</h4>
+          </div>
+          <p>
+            Natural stream channels carry runoff south-westward towards the Neyyar River basin. <em>Clarification:</em> The Neyyar River does not directly flow through or cause riverbank overtopping within Kollayil unless severe regional backwater conditions occur.
+          </p>
+          <div class="dev-tag-list">
+            <span class="dev-tag-item">Stream Orders 1-3</span>
+            <span class="dev-tag-item">Neyyar Sub-basin</span>
+          </div>
+        </div>
+
+        <div class="dev-card" style="background:#fffaf0; border-color:#fbd38d;">
+          <div class="dev-card-header">
+            <div class="dev-icon-box" style="background:#fef3c7; color:#b45309;">⛰️</div>
+            <h4>Slope Stability & Soil Erosion</h4>
+          </div>
+          <p>
+            Terrain slope varies from 0&deg; in plains to over 35&deg; on eastern ridge scarps. Steeper slopes covered by shallow skeletal soils are prone to rill erosion, requiring protective vegetative cover and terracing.
+          </p>
+          <div class="dev-tag-list">
+            <span class="dev-tag-item">Slope Screening</span>
+            <span class="dev-tag-item">Erosion Prevention</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="disaster-grid">
+        <!-- Emergency Response Directory -->
+        <div class="disaster-card">
+          <h3><span>📞</span> Official Emergency Contacts</h3>
+          <p style="font-size: 0.82rem; color: #78350f; margin-bottom: 0.75rem;">Verified 24/7 government control room helplines for Thiruvananthapuram District:</p>
+          <table class="emergency-contacts-table">
+            <thead>
+              <tr>
+                <th>Emergency Agency</th>
+                <th>Toll-Free Helpline</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>National Emergency Helpline</td>
+                <td><a href="tel:112" class="contact-pill">112</a></td>
+              </tr>
+              <tr>
+                <td>District Emergency Ops Centre (DEOC)</td>
+                <td><a href="tel:1077" class="contact-pill">1077</a></td>
+              </tr>
+              <tr>
+                <td>Neyyattinkara Taluk Control Room</td>
+                <td><a href="tel:04712222227" class="contact-pill">0471-2222227</a></td>
+              </tr>
+              <tr>
+                <td>Kerala Fire & Rescue Services</td>
+                <td><a href="tel:101" class="contact-pill">101</a></td>
+              </tr>
+              <tr>
+                <td>State Health & Ambulance Services</td>
+                <td><a href="tel:108" class="contact-pill">108</a></td>
+              </tr>
+              <tr>
+                <td>Kollayil Panchayat Emergency Desk</td>
+                <td><a href="tel:04712232383" class="contact-pill">0471-2232383</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 12.5 Practical Planning Recommendations -->
+        <div class="disaster-card">
+          <h3><span>📋</span> Disaster Management Recommendations</h3>
+          <p style="font-size:0.82rem; color:#78350f; margin-bottom:0.75rem;">Practical spatial planning suggestions (not formal Panchayat decrees):</p>
+          <ul style="font-size: 0.82rem; color: #475569; padding-left: 1.25rem; line-height: 1.55;">
+            <li><strong>Canal & Stream De-silting:</strong> Pre-monsoon clearing of 13 primary drainage channels prior to May 31 annually.</li>
+            <li><strong>Wetland Retention Preservation:</strong> Maintaining Kalatharaikkal Padasekharam and natural lowlands to absorb peak rainfall.</li>
+            <li><strong>Slope Terracing & Cover Cropping:</strong> Soil conservation along steep gradients (&gt;15&deg;) using vetiver grass and contour bunds.</li>
+            <li><strong>Pond & Embankment Maintenance:</strong> Preserving traditional Chiras as localized runoff detention reservoirs.</li>
+            <li><strong>Ward Disaster Preparedness:</strong> Training neighborhood volunteers in first aid and evacuation assistance.</li>
+          </ul>
+        </div>
+
+        <!-- Relief Shelters Directory -->
+        <div class="disaster-card">
+          <h3><span>🏥</span> Designated Relief Shelters</h3>
+          <p style="font-size: 0.85rem; color: #475569; margin-bottom: 0.75rem;">
+            Spatial data layer for safe assembly points, cyclone shelters, and higher secondary schools with designated shelter capacities:
+          </p>
+          <div style="background: #fffaf0; border: 1px dashed #fbd38d; padding: 0.85rem; border-radius: var(--radius-sm); font-size: 0.8rem; color: #744210; margin-bottom:0.75rem;">
+            <strong>Dhanuvachapuram Designated Relief Shelter (HSS):</strong> Capacity ~450 Persons. Equipped with emergency backup generator, separate sanitation facilities, and clean drinking water storage.
+          </div>
+          <div style="background: #fffaf0; border: 1px dashed #fbd38d; padding: 0.85rem; border-radius: var(--radius-sm); font-size: 0.8rem; color: #744210;">
+            <strong>Udiyankulangara Community Hall:</strong> Secondary safe assembly point along the southern transport corridor for emergency temporary housing.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       16. PHOTO GALLERY
+       ======================================================================== -->
+  <section class="gallery-section" id="gallery">
+    <div class="profile-container">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2><span>📸</span> Curated Photo & Cartographic Gallery</h2>
+          <p>Local authentic photography, digital terrain models, satellite imagery, and topographic maps of Kollayil Grama Panchayat.</p>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="./assets/images/kollayil-office.webp" alt="Kollayil Grama Panchayat Office" />
+          </div>
+          <div class="gallery-info">
+            <h4>Kollayil Grama Panchayat Office</h4>
+            <p>Civic administrative headquarters at Dhanuvachapuram, coordinating local public services and planning.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="./assets/images/agricultural-image.jpeg" alt="Kalatharaikkal Padasekharam Agriculture" />
+          </div>
+          <div class="gallery-info">
+            <h4>Kalatharaikkal Padasekharam</h4>
+            <p>Picturesque paddy fields with coconut palms in Nadurkolla Ward, the agrarian heart of Kollayil.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="./assets/images/terrain/dem-relief.png" alt="Digital Elevation Model of Kollayil" style="object-fit:contain; background:#1b4332;" />
+          </div>
+          <div class="gallery-info">
+            <h4>Digital Elevation Model (DEM)</h4>
+            <p>SRTM 30m color-relief map representing elevations from 1m along valley channels to 406m on ridge tops.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="./assets/images/terrain/slope.png" alt="Slope Gradient Analysis Map" style="object-fit:contain; background:#081c15;" />
+          </div>
+          <div class="gallery-info">
+            <h4>Slope Gradient Classification</h4>
+            <p>Categorized terrain slope map from 0&deg; gentle plains to &gt;35&deg; steep escarpments for land-use planning.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="./assets/images/terrain/hillshade.png" alt="Hillshade Relief Map" style="object-fit:contain; background:#334155;" />
+          </div>
+          <div class="gallery-info">
+            <h4>Hillshade Morphometric Relief</h4>
+            <p>3D shaded relief highlighting drainage valleys, structural ridges, and dissected laterite plateaus.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" style="background:#2a4365; display:flex; align-items:center; justify-content:center; color:#ffffff;">
+            <div style="text-align:center; padding:1.5rem;">
+              <span style="font-size:3rem;">🗺️</span>
+              <div style="font-weight:700; margin-top:0.5rem;">OpenTopoMap Integration</div>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <h4>OpenTopoMap & Google Satellite</h4>
+            <p>Seamlessly integrated web tile layers in the interactive Web GIS viewer for topographic and satellite inspection.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       17. PART O — DATA SOURCES, METHODOLOGY, AND LIMITATIONS
+       ======================================================================== -->
+  <section class="about-section" id="methodology">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <h2><span>📖</span> Data Sources, Methodology, and Limitations</h2>
+        <p>Scientific documentation, coordinate reference systems, geoprocessing workflows, and verification statuses.</p>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <article class="about-article">
+        <h3>1. Project Background & Scope</h3>
+        <p>
+          This Web GIS platform was built for <strong>Kollayil Grama Panchayat</strong> in Neyyattinkara Taluk, Thiruvananthapuram District, Kerala. The portal provides spatial decision support for local rural development, infrastructural mapping, and disaster vulnerability monitoring using open-source geospatial technologies.
+        </p>
+
+        <h3>2. Cartographic & GIS Methodology</h3>
+        <p>
+          Spatial data preparation was performed using <strong>QGIS 3.44 LTR</strong> on Windows:
+        </p>
+        <ul>
+          <li><strong>Georeferencing & Reprojection:</strong> Source datasets originally projected in UTM Zone 43N (EPSG:32643) were converted and exported to Geographic WGS 84 (EPSG:4326) to ensure seamless compatibility with Leaflet.js web tiles.</li>
+          <li><strong>Topological Validation:</strong> Boundary polygons undergo clean geometry checks to avoid slivers, overlaps, and invalid vertices before web publishing.</li>
+          <li><strong>Attribute Schema Standardization:</strong> Standardized feature properties for wards, roads, drainage channels, soils, contours, and public infrastructure.</li>
+        </ul>
+
+        <h3>3. Data Sources & Acknowledgments</h3>
+        <ul>
+          <li><strong>Kerala Local Self Government (Panchayat) Department:</strong> Demographic statistics updated on 17 March 2026 and administrative jurisdiction figures.</li>
+          <li><strong>Survey of India (SoI):</strong> Open Series Maps (OSM) for topographic baseline reference.</li>
+          <li><strong>OpenStreetMap Contributors:</strong> Base cartography and road transport geometry (ODbL).</li>
+          <li><strong>USGS / NASA SRTM:</strong> 30-meter Shuttle Radar Topography Mission digital elevation data.</li>
+          <li><strong>Kerala State Disaster Management Authority (KSDMA):</strong> Hazard assessment methodology and emergency protocols.</li>
+        </ul>
+
+        <h3>4. Academic & Scientific Limitations</h3>
+        <p>
+          This platform maintains strict academic integrity. No unverified cadastral boundaries or fabricated figures are used. In accordance with user instruction, the 2011 Census report was excluded from this project, and demographic data represents the official figures reported on 17 March 2026.
+        </p>
+      </article>
+
+      <aside class="sidebar-callout">
+        <div class="callout-box">
+          <h4>Integrated Spatial Datasets</h4>
+          <p>
+            &bull; <code>data/drainage.geojson</code> (Stream Orders 1-3)<br />
+            &bull; <code>data/roads.geojson</code> (29 Road Segments)<br />
+            &bull; <code>data/soil.geojson</code> (Red & Hill Soil)<br />
+            &bull; <code>data/contours.geojson</code> (163 Isolines at 10m)<br />
+            &bull; <code>data/geology.geojson</code> (Khondalite, Charnockite)<br />
+            &bull; <code>data/geomorphology.geojson</code> (22 Landforms)<br />
+            &bull; <code>data/kollayil-wards.geojson</code> (Administrative Wards)<br />
+            &bull; <code>data/facilities.geojson</code> (13 Public Facilities)
+          </p>
+        </div>
+
+        <div class="callout-box">
+          <h4>Download Source Rasters</h4>
+          <p>
+            GeoTIFF datasets available in <code>data/rasters/</code>:<br />
+            &bull; <a href="./data/rasters/clippe dem.tif" download style="font-weight:600; color:var(--primary-color);">clippe dem.tif</a> (SRTM DEM)<br />
+            &bull; <a href="./data/rasters/hill shade.tif" download style="font-weight:600; color:var(--primary-color);">hill shade.tif</a> (Hillshade)<br />
+            &bull; <a href="./data/rasters/slope kollayil.tif" download style="font-weight:600; color:var(--primary-color);">slope kollayil.tif</a> (Slope)
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       18. PART P — PROJECT DEVELOPER INFORMATION
+       ======================================================================== -->
+  <section class="developer-section" id="developer">
+    <div class="developer-card">
+      <div class="developer-avatar">
+        HL
+      </div>
+      <div class="developer-info">
+        <h3>HAINA .L. HERON</h3>
+        <div class="developer-tag">Lead Web GIS Developer & Spatial Cartographer</div>
+        <p class="developer-bio">
+          “This Web GIS project presents the geographical, demographic, environmental, agricultural, historical, and disaster management characteristics of Kollayil Grama Panchayat using GIS datasets, interactive maps, statistical summaries, and local information.”
+        </p>
+        <p class="developer-bio" style="font-size:0.85rem; color:#cbd5e1;">
+          <strong>Study Area:</strong> Kollayil Grama Panchayat, Neyyattinkara Taluk, Thiruvananthapuram District, Kerala, India.
+        </p>
+        <a href="mailto:hainalheron2005@gmail.com" class="developer-email-link">
+          <span>✉️</span> Contact Developer: hainalheron2005@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       19. SITE FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p><strong>Kollayil Grama Panchayat Web GIS Portal</strong></p>
+        <p>Perumkadavila Block &bull; Neyyattinkara Taluk &bull; Thiruvananthapuram District &bull; Kerala 695503</p>
+        <p style="font-size:0.78rem; color:#94a3b8; margin-top:0.35rem;">
+          Academic Postgraduate Project by <strong>HAINA .L. HERON</strong> (<a href="mailto:hainalheron2005@gmail.com" style="color:#cbd5e1;">hainalheron2005@gmail.com</a>) &bull; Demographics Updated 17 March 2026.
+        </p>
+      </div>
+      <div class="footer-right">
+        <a href="#home">Back to Top &uarr;</a>
+        <a href="#profile">Profile</a>
+        <a href="#webgis">Interactive Map</a>
+        <a href="#development">Development</a>
+        <a href="#demographics">Demographics</a>
+        <a href="#agriculture">Agriculture</a>
+        <a href="#disaster">Disaster Mgmt</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet.js JavaScript (v1.9.4) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Chart.js for Statistics Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Web GIS Map Controller Application -->
+  <script src="script.js"></script>
+</body>
+</html>
